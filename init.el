@@ -22,10 +22,9 @@
 
 ;; load configuration settings by type
 (user/init "freshen.el")
-(user/init "system.el")
 (user/init "autoload.el")
+(user/init "system.el")
 (user/init "packages.el")
-(user/init "vendor.el")
 (user/init "compile.el")
 (user/init "autohooks.el")
 (user/init "settings.el")
