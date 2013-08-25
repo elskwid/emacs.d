@@ -14,7 +14,6 @@
 ;; from JEG2
 ;;  'color-theme-sanityinc-tomorrow
 ;;  'full-ack
-;;  'web-mode
 ;;  'yagist
 ;;  'yaml-mode
 ;;  'yasnippet
@@ -29,12 +28,11 @@
   'expand-region
   'dash
   'fill-column-indicator
-  'git-commit-mode
   'idomenu
   'ido-ubiquitous
   'imenu
   'inf-ruby
-  'magit
+  ;;'magit
   'paredit
   'ruby-compilation
   'saveplace
@@ -45,10 +43,13 @@
   'window-number
   ;; modes
   'coffee-mode
+  'css-mode
   'markdown-mode
   'rainbow-mode
   'ruby-mode
+  'sass-mode
   'scss-mode
+  'web-mode
   )
 
 
