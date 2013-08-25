@@ -8,6 +8,7 @@
 !README.md
 !init.el
 !elskwid
+!vendor
 
 *.elc
 /**/*.elc
