@@ -5,27 +5,14 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; relocate autosave files (from @bitbckt)
-(defvar autosave-dir
- (concat "/tmp/emacs_autosaves/" (user-login-name) "/"))
+;; relocate autosave and backup files - similar to @bitbckt
+(setq autosave-dir (concat "/tmp/emacs_autosaves/" (user-login-name) "/"))
+(setq backup-dir (concat "/tmp/emacs_backups/" (user-login-name) "/"))
 
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
+
+(setq auto-save-list-file-prefix autosave-dir)
 
 (make-directory autosave-dir t)
 
-(defun auto-save-file-name-p (filename)
-  (string-match "^#.*#$" (file-name-nondirectory filename)))
-
-(defun make-auto-save-file-name ()
-  (concat autosave-dir
-   (if buffer-file-name
-      (concat "#" (file-name-nondirectory buffer-file-name) "#")
-    (expand-file-name
-     (concat "#%" (buffer-name) "#")))))
-
-;; relocate backup files (from @bitbckt)
-;; The backup-directory-alist list contains regexp=>directory mappings;
-;; filenames matching a regexp are backed up in the corresponding directory.
-;; Emacs will mkdir it if necessary.
-(defvar backup-dir (concat "/tmp/emacs_backups/" (user-login-name) "/"))
-(setq backup-directory-alist (list (cons "." backup-dir)))
+(setq backup-directory-alist `((".*" . ,backup-dir)))
