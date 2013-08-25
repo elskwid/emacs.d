@@ -5,36 +5,9 @@
                 ("melpa"     . "http://melpa.milkbox.net/packages/")))
   (add-to-list 'package-archives repo))
 
-(defun user/package-refresh-and-install (name)
-  "Ensure we have a fresh package list, then install."
-  (package-refresh-contents)
-  (package-install name))
-
-(defun user/package-install-unless-installed (name)
-  "Install a package by name unless it is already installed."
-  (or (package-installed-p name) (user/package-refresh-and-install name)))
-
-(defun user/package-version-for (package)
-  "Get the version of a loaded package."
-  (package-desc-vers (cdr (assoc package package-alist))))
-
-(defun user/package-delete-by-name (package)
-  "Remove a package by name."
-  (package-delete (symbol-name package)
-                  (package-version-join (user/package-version-for package))))
-
-(defun user/package-delete-unless-listed (packages)
-  "Remove packages not explicitly declared."
-  (dolist (package (mapcar 'car package-alist))
-    (unless (memq package packages) (user/package-delete-by-name package))))
-
-(defun user/package-install-and-remove-to-match-list (&rest packages)
-  "Sync packages so the installed list matches the passed list."
-  (package-initialize)
-  (condition-case nil ;; added to handle no-network situations
-      (mapc 'user/package-install-unless-installed packages)
-    (error (message "Couldn't install package. No network connection?")))
-  (user/package-delete-unless-listed packages))
+;; Zenspiders package enhancements
+;; https://github.com/zenspider/package
+(user/vendor "package" 'package+)
 
 ;; not installed
 
@@ -51,7 +24,8 @@
 ;;  'inflections
 ;;  'magithub
 
-(user/package-install-and-remove-to-match-list
+;;(user/package-install-and-remove-to-match-list
+(package-manifest
   'expand-region
   'dash
   'fill-column-indicator
@@ -76,3 +50,14 @@
   'ruby-mode
   'scss-mode
   )
+
+
+;; Ethan is OCD about whitespace
+;; https://github.com/glasserc/ethan-wspace
+(user/vendor "ethan-wspace/lisp/" 'ethan-wspace)
+
+;; Color theme
+;; https://github.com/neil477/base16-emacs
+;; using this fork https://github.com/milkypostman/base16-emacs (2013-08-19)
+;; until the main repo gets the light versions.
+(user/theme "base16-emacs")
