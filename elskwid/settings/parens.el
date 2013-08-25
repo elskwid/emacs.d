@@ -1,4 +1,4 @@
-(show-paren-mode 1)
+(show-paren-mode)
 
 ;; https://github.com/Fuco1/smartparens/wiki
 ;; default smartparens config
