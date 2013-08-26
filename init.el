@@ -1,33 +1,17 @@
-;; elskwid emacs config
-;; Conventions from zenspider, JEG2, avdi, and others.
+;; elskwid.el
+(setq my-init-file     (or load-file-name buffer-file-name))
+(add-to-list 'load-path (file-name-directory my-init-file))
 
-(setq my-user       "elskwid")
-(setq my-init-file  (or load-file-name buffer-file-name))
-(setq my-emacs-dir  (file-name-directory my-init-file))
-(setq my-config-dir (expand-file-name (concat my-user "/") my-emacs-dir))
-(setq my-init-dir   (expand-file-name "init/" my-config-dir))
+(require 'core)
+(require 'packages)
 
-;; set emacs directory
-(setq user-emacs-directory my-emacs-dir)
-
-(defun user/load-file (path &optional noerror)
-  "This loads a file from inside the the .emacs.d directory"
-  (let ((file (file-name-sans-extension
-               (expand-file-name path my-emacs-dir))))
-    (load file noerror)))
-
-(defun user/init (file)
-  "This loads an init file"
-  (user/load-file (expand-file-name file my-init-dir)))
-
-;; load configuration settings by type
-(user/init "freshen.el")
-(user/init "autoload.el")
-(user/init "system.el")
-(user/init "packages.el")
-(user/init "compile.el")
-(user/init "autohooks.el")
-(user/init "settings.el")
+(user/delete-old-bytecode)
+(user/prepare-autoloads)
+(user/recompile-bytecode)
+(user/prepare-system-settings)
+(user/prepare-packages)
+(user/prepare-autohooks)
+(user/prepare-settings))
 
 ;; Customize
 (custom-set-variables
