@@ -11,7 +11,7 @@
 (user/prepare-system-settings)
 (user/prepare-packages)
 (user/prepare-autohooks)
-(user/prepare-settings))
+(user/prepare-settings)
 
 ;; Customize
 (custom-set-variables
