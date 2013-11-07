@@ -1,6 +1,10 @@
 ;; css-mode
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
 
+;; js2-mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.javascript\\'" . js2-mode))
+
 ;; markdown-mode
 (add-to-list 'auto-mode-alist '("\\.markdn\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'"  . markdown-mode))

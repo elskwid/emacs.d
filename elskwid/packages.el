@@ -44,6 +44,7 @@
    ;; modes
    'coffee-mode
    'css-mode
+   'js2-mode
    'markdown-mode
    'rainbow-mode
    'ruby-mode
