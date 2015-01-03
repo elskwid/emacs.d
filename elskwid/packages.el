@@ -25,20 +25,24 @@
 
 (defun user/prepare-packages ()
   (package-manifest
+   'ag
    'expand-region
    'dash
    'fill-column-indicator
+   'floobits
    'idomenu
    'ido-ubiquitous
+   'ido-vertical-mode
    'imenu
    'inf-ruby
-   ;;'magit
+   'magit
+   'multiple-cursors
    'paredit
    'ruby-compilation
    'saveplace
    'smartparens
    'smex
-   'uniquify
+   ;; 'uniquify
    'whitespace
    'window-number
    ;; modes

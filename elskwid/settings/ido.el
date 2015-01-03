@@ -1,4 +1,5 @@
 (ido-mode t)
+(ido-vertical-mode t)
 (ido-ubiquitous t)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t

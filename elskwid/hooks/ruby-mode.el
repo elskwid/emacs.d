@@ -25,3 +25,6 @@
 ;; no deep indentation
 (setq ruby-deep-indent-paren nil)
 (setq ruby-deep-arglist nil)
+
+;; no addition of -*- coding: utf-8 -*- comment
+(setq ruby-insert-encoding-magic-comment nil)
